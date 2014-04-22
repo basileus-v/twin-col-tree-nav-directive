@@ -87,6 +87,10 @@
             }
             $scope.treeData.atSelectTreeNode(child);
           };
+
+          var initialChildren = $scope.treeData.getChildren();
+          var firstChild = initialChildren && initialChildren.length > 0 && initialChildren[0];
+          $scope.selectChild(firstChild, initialChildren);
         },
         link: function postLink(scope, element, attrs) {
         }
