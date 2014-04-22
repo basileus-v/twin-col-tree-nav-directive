@@ -1,0 +1,61 @@
+.twin-col-tree-nav {
+  border: solid 5px blue;
+  height: 100%;
+  width: 100%;
+  float: left;
+  padding: 2px 2px 2px 2px;
+}
+
+.search {
+  border: solid 3px #95ac3f;
+  width: 100%;
+  padding: 2px 2px 2px 2px;
+  float: left;
+}
+
+.bread-crumb {
+  border: solid 2px #46ffbc;
+  width: 100%;
+  padding: 2px 2px 2px 2px;
+  float: left;
+}
+
+.bread-crumb-elem {
+  margin-right: 5px;
+  padding: 2px 2px 2px 2px;
+}
+
+.twin-cols {
+  border: solid 3px #801435;
+  height: 100%;
+  width: 100%;
+  padding: 2px 2px 2px 2px;
+  float: left;
+}
+
+.left-column {
+  border: solid 2px #46e2ff;
+  width: 50%;
+  height: 100%;
+  float: left;
+  padding: 2px 2px 2px 2px;
+}
+
+.right-column {
+  border: solid 2px brown;
+  width: 50%;
+  float: left;
+  height: 100%;
+  padding: 2px 2px 2px 2px;
+}
+
+.list-item {
+  border: solid 1px #ad7d38;
+  width: 100%;
+  padding: 2px 2px 2px 2px;
+}
+
+.child-pointer {
+  float: right;
+  padding: 2px 2px 2px 2px;
+}
