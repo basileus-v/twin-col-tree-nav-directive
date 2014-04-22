@@ -7,16 +7,26 @@
         template: template,
         restrict: 'EA',
         scope: {
-          treeData: '='
+          treeHandle: '='
         },
         controller: function ($scope) {
-          $scope.treeData.atSelectTreeNode = $scope.treeData.atSelectTreeNode || function () {
+          $scope.treeHandle.atSelectTreeNode = $scope.treeHandle.atSelectTreeNode || function () {
+            // Making sure there is a default implementation
           };
-          $scope.treeData.getChildren = $scope.treeData.getChildren || function () {
+          $scope.treeHandle.getChildren = $scope.treeHandle.getChildren || function () {
+            // Making sure there is a default implementation
             return [];
           };
-          $scope.treeData.hasChildren = $scope.treeData.hasChildren || function () {
+          $scope.treeHandle.hasChildren = $scope.treeHandle.hasChildren || function () {
+            // Making sure there is a default implementation
             return false;
+          };
+          // The atTreeUpdate() function is intended for facilitating callback from
+          // tree provider when the tree data has been updated
+          $scope.treeHandle.atTreeUpdate = function(parentTreeNode){
+            // TODO handle partial update of the specified parentTreeNode (i.e. a child has been added or removed)
+            // For now reset view
+            $scope.currentRoots = $scope.treeHandle.getChildren();
           };
 
           function getParent(curBreadCrumb, breadCrumbElem) {
@@ -59,25 +69,25 @@
             }
           }
 
-          $scope.currentRoots = $scope.treeData.getChildren();
+          $scope.currentRoots = $scope.treeHandle.getChildren();
 
           $scope.childrenOfSelectedRoot = [];
 
           $scope.breadCrumb = [];
 
           $scope.hasChildren = function (treeNode) {
-            return $scope.treeData.hasChildren(treeNode);
+            return $scope.treeHandle.hasChildren(treeNode);
           };
 
           $scope.selectBreadCrumbElement = function (breadCrumbElem) {
-            var siblings = $scope.treeData.getChildren(getParent($scope.breadCrumb, breadCrumbElem));
+            var siblings = $scope.treeHandle.getChildren(getParent($scope.breadCrumb, breadCrumbElem));
             $scope.selectChild(breadCrumbElem, siblings, true);
           };
 
           $scope.selectRoot = function selectRoot(root, appendChild, rebuildBreadCrumb) {
             $scope.breadCrumb = updatedBreadCrumb($scope.breadCrumb, root, appendChild, rebuildBreadCrumb);
-            $scope.childrenOfSelectedRoot = $scope.treeData.getChildren(root);
-            $scope.treeData.atSelectTreeNode(root);
+            $scope.childrenOfSelectedRoot = $scope.treeHandle.getChildren(root);
+            $scope.treeHandle.atSelectTreeNode(root);
           };
 
           $scope.selectChild = function selectChild(child, siblings, rebuildBreadCrumb) {
@@ -85,10 +95,10 @@
               $scope.currentRoots = siblings;
               $scope.selectRoot(child, true, rebuildBreadCrumb);
             }
-            $scope.treeData.atSelectTreeNode(child);
+            $scope.treeHandle.atSelectTreeNode(child);
           };
 
-          var initialChildren = $scope.treeData.getChildren();
+          var initialChildren = $scope.treeHandle.getChildren();
           var firstChild = initialChildren && initialChildren.length > 0 && initialChildren[0];
           $scope.selectChild(firstChild, initialChildren);
         },
