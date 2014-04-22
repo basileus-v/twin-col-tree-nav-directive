@@ -4,12 +4,13 @@
   "authors": [
     "Joel Binnquist <joel.binnquist@gmail.com>"
   ],
-  "description": "A twin column tree navigation component (a' la Miller column).",
+  "description": "A twin column tree navigation component (a'la Logic Pro X or Miller columns).",
   "main": ["src/twinColTreeNav.js","src/twinColTreeNav.css"],
   "keywords": [
     "tree",
     "navigation",
     "miller",
+    "column",
     "logic"
   ],
   "license": "MIT",
