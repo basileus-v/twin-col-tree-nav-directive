@@ -18,7 +18,7 @@ angular.module('twinColTreeNav', [])
       '    <!-- Left -->' +
       '    <div class="left-column">' +
       '      <div class="list-item" ng-repeat="root in currentRoots">' +
-      '        <a href="" ng-click="selectRoot(root)">' +
+      '        <a href="" ng-click="selectRoot(root)" ng-class="{selectedtreenode: isSelected(root)}">' +
       '          {{root.name}}' +
       '          <span class="child-pointer" ng-if="hasChildren(root)"> &#9658;</span>' +
       '        </a>' +
@@ -113,6 +113,10 @@ angular.module('twinColTreeNav', [])
 
         $scope.breadCrumb = [];
 
+        $scope.isSelected = function(treeNode) {
+          return $scope.selectedTreeRoot === treeNode;
+        };
+
         $scope.hasChildren = function (treeNode) {
           return $scope.treeHandle.hasChildren(treeNode);
         };
@@ -123,6 +127,7 @@ angular.module('twinColTreeNav', [])
         };
 
         $scope.selectRoot = function selectRoot(root, appendChild, rebuildBreadCrumb) {
+          $scope.selectedTreeRoot = root;
           $scope.breadCrumb = updatedBreadCrumb($scope.breadCrumb, root, appendChild, rebuildBreadCrumb);
           $scope.childrenOfSelectedRoot = $scope.treeHandle.getChildren(root);
           $scope.treeHandle.atSelectTreeNode(root);
