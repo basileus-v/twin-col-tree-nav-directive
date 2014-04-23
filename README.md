@@ -1,6 +1,6 @@
 Angular Directive: Twin Miller Columns Tree Navigation 
 ======================================================
-This is an angular directive that provides a tree navigation in the form of 
+This is an Angular JS directive that provides a tree navigation in the form of 
 twin miller columns which shows the current selected tree node with its siblings
 in the left column and the children of the selected tree node in the right
 column. When a child, that itself got children, is selected it is (together
