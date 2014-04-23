@@ -12,6 +12,7 @@ angular.module('twinColTreeNav', [])
       '      </a>' +
       '    </span>' +
       '  </div>' +
+      '  <hr>' +
       '  <!-- twin col -->' +
       '  <div class="twin-cols">' +
       '    <!-- Left -->' +
