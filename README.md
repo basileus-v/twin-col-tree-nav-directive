@@ -1,7 +1,7 @@
-Angular Directive: Twin Miller Column Tree Navigation 
-=====================================================
+Angular Directive: Twin Miller Columns Tree Navigation 
+======================================================
 This is an angular directive that provides a tree navigation in the form of 
-twin miller columns which shows the current selcted tree node with its siblings 
+twin miller columns which shows the current selected tree node with its siblings 
 and its children. In addition the bread crumb to the currently selected tree
 node is displayed.
 
