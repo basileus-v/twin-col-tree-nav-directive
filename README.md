@@ -98,7 +98,8 @@ of an object with an interface with the following methods:
     
 `getChildren(parentTreeNode)`
 
-Used by the directive to get the children of the specified tree node.
+Used by the directive to get the children of the specified tree node. If _parentTreeNode_
+is _undefined_, it shall be interpreted as "give me all root nodes".
 
 `hasChildren(treeNode)`
 
