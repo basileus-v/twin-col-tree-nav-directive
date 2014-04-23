@@ -1,0 +1,70 @@
+.twin-col-tree-nav {
+    float: left;
+    padding-left: 2px;
+    height: 100%;
+    width: 100%;
+/*    border: solid 5px blue;
+    padding: 2px 2px 2px 2px; */
+}
+
+.search {
+    padding-left: 2px;
+    float: left;
+    width: 100%;
+/*    border: solid 3px #95ac3f;
+    padding: 2px 2px 2px 2px;*/
+}
+
+.bread-crumb {
+    padding-left: 2px;
+    float: left;
+    width: 100%;
+/*    border: solid 2px #46ffbc;
+    padding: 2px 2px 2px 2px;*/
+}
+
+.bread-crumb-elem {
+    margin-right: 2px;
+/*    padding: 2px 2px 2px 2px;*/
+}
+
+.twin-cols {
+    padding-left: 2px;
+    float: left;
+    height: 100%;
+    width: 100%;
+/*    padding: 2px 2px 2px 2px;
+    border: solid 3px #801435;*/
+}
+
+.left-column {
+    padding-left: 2px;
+    float: left;
+    width: 49%;
+    height: 100%;
+/*    border: solid 2px #46e2ff;
+    padding: 2px 2px 2px 2px;*/
+}
+
+.right-column {
+    padding-left: 2px;
+    float: left;
+    width: 49%;
+    height: 100%;
+/*    border: solid 2px brown;
+    padding: 2px 2px 2px 2px;*/
+}
+
+.list-item {
+    padding-left: 2px;
+    float: left;
+    width: 100%;
+/*    padding: 2px 2px 2px 2px;
+    border: solid 1px #ad7d38;*/
+}
+
+.child-pointer {
+    padding-right: 2px;
+    float: right;
+/*    padding: 2px 2px 2px 2px;*/
+}

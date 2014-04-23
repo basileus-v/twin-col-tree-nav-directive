@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "twin-col-tree-nav-directive ",
   "keywords": [
-    "angular","tree","navigation"
+    "angular",
+    "tree",
+    "navigation"
   ],
   "homepage": "https://github.com/joelbinn/twin-col-tree-nav-directive",
   "bugs": "https://github.com/joelbinn/twin-col-tree-nav-directive/issues",
@@ -44,6 +46,7 @@
     "karma-requirejs": "~0.2.0",
     "karma-coffee-preprocessor": "~0.1.0",
     "karma-phantomjs-launcher": "~0.1.0",
-    "karma": "~0.10.2"
+    "karma": "~0.10.2",
+    "grunt-contrib-copy": "^0.5.0"
   }
 }

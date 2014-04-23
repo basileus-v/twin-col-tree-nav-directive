@@ -2,6 +2,7 @@
 'use strict';
 
 module.exports = function(grunt) {
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Configurable paths
   var yoConfig = {
@@ -102,6 +103,14 @@ module.exports = function(grunt) {
         }
       }
     },
+    copy: {
+      dist: {
+        expand:true,
+        flatten:true,
+        src: 'src/*',
+        dest: 'dist/'
+      }
+    },
     jshint: {
       gruntfile: {
         options: {
@@ -176,6 +185,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'copy:dist',
     'less:dist',
     'ngmin:dist',
     'uglify:dist'
