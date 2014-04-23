@@ -68,3 +68,7 @@
     float: right;
 /*    padding: 2px 2px 2px 2px;*/
 }
+
+.selectedtreenode {
+    font-weight: bolder;
+}

@@ -114,7 +114,7 @@ angular.module('twinColTreeNav', [])
         $scope.breadCrumb = [];
 
         $scope.isSelected = function(treeNode) {
-          return $scope.selectedTreeRoot === treeNode;
+          return $scope.selectedTreeRoot.name === treeNode.name;
         };
 
         $scope.hasChildren = function (treeNode) {
