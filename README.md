@@ -115,7 +115,8 @@ the handle object will have been adorned with the following method:
 `atTreeUpdate()`
 
 This method can be used to signal that the tree data has been updated and that 
-the directive needs to update the view. 
+the directive needs to update the view. This can typically be used when the tree
+is loaded asynchronously.
     
 A _treeNode_ is an object which must provide a _name_ property.
 
@@ -127,4 +128,13 @@ underlying data structure.
 
 ## Examples
 Example on [Plunkr](http://embed.plnkr.co/LgjOHVUnwaZEzafcU1ME/preview)
+
+## TODO
+
+###Partial tree update
+Currently the entire view is reset when calling `atTreeUpdate()`.
+
+`atTreeUpdate()` should take a parameter indicating which parent has been updated
+and the directive controller should then perform partial view refresh.
+
 
