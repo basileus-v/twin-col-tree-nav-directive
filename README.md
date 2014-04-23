@@ -46,8 +46,8 @@ Include in web page
 
 ### ...and implement tree handle in a controller
 
-   angular.module('myModule', ['twinColTreeNav'])
-   .controller('MainCtrl', function ($scope) {
+     angular.module('myModule', ['twinColTreeNav'])
+       .controller('MainCtrl', function ($scope) {
          // Remember, the underlying tree data can be o any structure...
          var myTree = {
            root1: ['node1', 'node2', 'node3'],
