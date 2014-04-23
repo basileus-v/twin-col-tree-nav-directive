@@ -10,6 +10,12 @@
           treeHandle: '='
         },
         controller: function ($scope) {
+          function init() {
+            var initialChildren = $scope.treeHandle.getChildren();
+            var firstChild = initialChildren && initialChildren.length > 0 && initialChildren[0];
+            $scope.selectChild(firstChild, initialChildren);
+          }
+          
           $scope.treeHandle.atSelectTreeNode = $scope.treeHandle.atSelectTreeNode || function () {
             // Making sure there is a default implementation
           };
@@ -26,7 +32,7 @@
           $scope.treeHandle.atTreeUpdate = function(parentTreeNode){
             // TODO handle partial update of the specified parentTreeNode (i.e. a child has been added or removed)
             // For now reset view
-            $scope.currentRoots = $scope.treeHandle.getChildren();
+            init();
           };
 
           function getParent(curBreadCrumb, breadCrumbElem) {
@@ -98,9 +104,7 @@
             $scope.treeHandle.atSelectTreeNode(child);
           };
 
-          var initialChildren = $scope.treeHandle.getChildren();
-          var firstChild = initialChildren && initialChildren.length > 0 && initialChildren[0];
-          $scope.selectChild(firstChild, initialChildren);
+          init();
         },
         link: function postLink(scope, element, attrs) {
         }
@@ -112,7 +116,7 @@
     '  <!-- Bread crumb -->' +
     '  <div class="bread-crumb">' +
     '    <span ng-repeat="elem in breadCrumb" class="bread-crumb-elem">' +
-    '      <a ng-click="selectBreadCrumbElement(elem)">' +
+    '      <a href="" ng-click="selectBreadCrumbElement(elem)">' +
     '        {{elem.name}}<span ng-if="hasChildren(elem)"> &#9658;</span>' +
     '      </a>' +
     '    </span>' +
@@ -122,7 +126,7 @@
     '    <!-- Left -->' +
     '    <div class="left-column">' +
     '      <div class="list-item" ng-repeat="root in currentRoots">' +
-    '        <a ng-click="selectRoot(root)">' +
+    '        <a href="" ng-click="selectRoot(root)">' +
     '          {{root.name}}' +
     '          <span class="child-pointer" ng-if="hasChildren(root)"> &#9658;</span>' +
     '        </a>' +
@@ -131,7 +135,7 @@
     '    <!-- Right -->' +
     '    <div class="right-column">' +
     '      <div class="list-item" ng-repeat="child in childrenOfSelectedRoot">' +
-    '        <a ng-click="selectChild(child, childrenOfSelectedRoot)">' +
+    '        <a href="" ng-click="selectChild(child, childrenOfSelectedRoot)">' +
     '          {{child.name}}' +
     '          <span class="child-pointer" ng-if="hasChildren(child)"> &#9658;</span>' +
     '        </a>' +
