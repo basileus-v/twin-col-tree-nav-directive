@@ -1,18 +1,22 @@
 'use strict';
-angular.module('twinColTreeNav', []).directive('twinColTreeNav', function () {
-  return {
-    template: template,
-    restrict: 'EA',
-    scope: { treeHandle: '=' },
-    controller: [
-      '$scope',
-      function ($scope) {
+
+angular.module('twinColTreeNav', [])
+  .directive('twinColTreeNav', function () {
+    return {
+      template: template,
+      restrict: 'EA',
+      scope: {
+        treeHandle: '='
+      },
+      controller: function ($scope) {
         function init() {
           var initialChildren = $scope.treeHandle.getChildren();
           var firstChild = initialChildren && initialChildren.length > 0 && initialChildren[0];
           $scope.selectChild(firstChild, initialChildren);
         }
+
         $scope.treeHandle.atSelectTreeNode = $scope.treeHandle.atSelectTreeNode || function () {
+          // Making sure there is a default implementation
         };
         $scope.treeHandle.getChildren = $scope.treeHandle.getChildren || function () {
           // Making sure there is a default implementation
@@ -29,6 +33,7 @@ angular.module('twinColTreeNav', []).directive('twinColTreeNav', function () {
           // For now reset view
           init();
         };
+
         function getParent(curBreadCrumb, breadCrumbElem) {
           if (curBreadCrumb) {
             for (var i = 0; i < curBreadCrumb.length; i++) {
@@ -40,6 +45,7 @@ angular.module('twinColTreeNav', []).directive('twinColTreeNav', function () {
             return undefined;
           }
         }
+
         function updatedBreadCrumb(curBreadCrumb, treeNode, appendChild, rebuildBreadCrumb) {
           var newBreadCrumb = [];
           if (rebuildBreadCrumb) {
@@ -67,21 +73,28 @@ angular.module('twinColTreeNav', []).directive('twinColTreeNav', function () {
             return newBreadCrumb;
           }
         }
+
         $scope.currentRoots = $scope.treeHandle.getChildren();
+
         $scope.childrenOfSelectedRoot = [];
+
         $scope.breadCrumb = [];
+
         $scope.hasChildren = function (treeNode) {
           return $scope.treeHandle.hasChildren(treeNode);
         };
+
         $scope.selectBreadCrumbElement = function (breadCrumbElem) {
           var siblings = $scope.treeHandle.getChildren(getParent($scope.breadCrumb, breadCrumbElem));
           $scope.selectChild(breadCrumbElem, siblings, true);
         };
+
         $scope.selectRoot = function selectRoot(root, appendChild, rebuildBreadCrumb) {
           $scope.breadCrumb = updatedBreadCrumb($scope.breadCrumb, root, appendChild, rebuildBreadCrumb);
           $scope.childrenOfSelectedRoot = $scope.treeHandle.getChildren(root);
           $scope.treeHandle.atSelectTreeNode(root);
         };
+
         $scope.selectChild = function selectChild(child, siblings, rebuildBreadCrumb) {
           if ($scope.hasChildren(child)) {
             $scope.currentRoots = siblings;
@@ -89,11 +102,43 @@ angular.module('twinColTreeNav', []).directive('twinColTreeNav', function () {
           }
           $scope.treeHandle.atSelectTreeNode(child);
         };
+
         init();
+      },
+      link: function postLink(scope, element, attrs) {
       }
-    ],
-    link: function postLink(scope, element, attrs) {
-    }
-  };
-  var template = '<div class="twin-col-tree-nav">' + '  <!-- Bread crumb -->' + '  <div class="bread-crumb">' + '    <span ng-repeat="elem in breadCrumb" class="bread-crumb-elem">' + '      <a href="" ng-click="selectBreadCrumbElement(elem)">' + '        {{elem.name}}<span ng-if="hasChildren(elem)"> &#9658;</span>' + '      </a>' + '    </span>' + '  </div>' + '  <!-- twin col -->' + '  <div class="twin-cols">' + '    <!-- Left -->' + '    <div class="left-column">' + '      <div class="list-item" ng-repeat="root in currentRoots">' + '        <a href="" ng-click="selectRoot(root)">' + '          {{root.name}}' + '          <span class="child-pointer" ng-if="hasChildren(root)"> &#9658;</span>' + '        </a>' + '      </div>' + '    </div>' + '    <!-- Right -->' + '    <div class="right-column">' + '      <div class="list-item" ng-repeat="child in childrenOfSelectedRoot">' + '        <a href="" ng-click="selectChild(child, childrenOfSelectedRoot)">' + '          {{child.name}}' + '          <span class="child-pointer" ng-if="hasChildren(child)"> &#9658;</span>' + '        </a>' + '      </div>' + '    </div>' + '  </div>' + '</div>';
-});
+    };
+
+    var template =
+      '<div class="twin-col-tree-nav">' +
+      '  <!-- Bread crumb -->' +
+      '  <div class="bread-crumb">' +
+      '    <span ng-repeat="elem in breadCrumb" class="bread-crumb-elem">' +
+      '      <a href="" ng-click="selectBreadCrumbElement(elem)">' +
+      '        {{elem.name}}<span ng-if="hasChildren(elem)"> &#9658;</span>' +
+      '      </a>' +
+      '    </span>' +
+      '  </div>' +
+      '  <!-- twin col -->' +
+      '  <div class="twin-cols">' +
+      '    <!-- Left -->' +
+      '    <div class="left-column">' +
+      '      <div class="list-item" ng-repeat="root in currentRoots">' +
+      '        <a href="" ng-click="selectRoot(root)">' +
+      '          {{root.name}}' +
+      '          <span class="child-pointer" ng-if="hasChildren(root)"> &#9658;</span>' +
+      '        </a>' +
+      '      </div>' +
+      '    </div>' +
+      '    <!-- Right -->' +
+      '    <div class="right-column">' +
+      '      <div class="list-item" ng-repeat="child in childrenOfSelectedRoot">' +
+      '        <a href="" ng-click="selectChild(child, childrenOfSelectedRoot)">' +
+      '          {{child.name}}' +
+      '          <span class="child-pointer" ng-if="hasChildren(child)"> &#9658;</span>' +
+      '        </a>' +
+      '      </div>' +
+      '    </div>' +
+      '  </div>' +
+      '</div>';
+  });
