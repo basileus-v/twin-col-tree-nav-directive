@@ -1,9 +1,19 @@
 Angular Directive: Twin Miller Columns Tree Navigation 
 ======================================================
 This is an angular directive that provides a tree navigation in the form of 
-twin miller columns which shows the current selected tree node with its siblings 
-and its children. In addition the bread crumb to the currently selected tree
-node is displayed.
+twin miller columns which shows the current selected tree node with its siblings
+in the left column and the children of the selected tree node in the right
+column. When a child, that itself got children, is selected it is (together
+with its siblings moved to the left column). in this way there is never more 
+than two columns (unlike canonical miller columns where the number of columns
+equals the current depth in the tree).
+
+In addition there is a bread crumb to the currently selected tree node displayed
+on top of the columns and one can navigate backwards in the hierarchy by selecting
+any element in the bread crumb.
+
+See example on [Plunkr](http://embed.plnkr.co/LgjOHVUnwaZEzafcU1ME/preview) for 
+further illustration.
 
 Getting Started
 ---------------
